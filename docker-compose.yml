@@ -14,6 +14,29 @@ services:
          extnetwork1:
             ipv4_address: 172.120.0.2
  
+   centos2:
+      image: centos:centos7.5.1804
+      container_name: centos2
+      privileged: true
+      restart: always
+      entrypoint:
+      - /sbin/init
+      tty: true
+      networks:
+         extnetwork:
+            ipv4_address: 172.119.0.3
+   centos3:
+      image: centos:centos7.5.1804
+      container_name: centos3
+      privileged: true
+      restart: always
+      entrypoint:
+      - /sbin/init
+      tty: true
+      networks:
+         extnetwork:
+             ipv4_address: 172.119.0.4
+
 networks:
    extnetwork:
       ipam:
