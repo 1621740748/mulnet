@@ -1,9 +1,12 @@
 version: '3'
 services:
    centos:
-      image: centos:centos8
+      image: centos:centos7.5.1804
       container_name: centos1
+      privileged: true
       restart: always
+      entrypoint:
+      - /sbin/init
       tty: true
       networks:
          extnetwork:
