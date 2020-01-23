@@ -1,0 +1,22 @@
+version: '3'
+services:
+   nginx:
+      image: nginx:1.13.12
+      container_name: nginx1
+      restart: always
+      tty: true
+      networks:
+         extnetwork:
+            ipv4_address: 172.119.0.2
+         extnetwork1:
+            ipv4_address: 172.120.0.2
+ 
+networks:
+   extnetwork:
+      ipam:
+         config:
+         - subnet: 172.119.0.0/16
+   extnetwork1:
+      ipam:
+         config:
+         - subnet: 172.120.0.0/16
