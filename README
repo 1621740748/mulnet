@@ -1,0 +1,20 @@
+yum install -y net-tools
+yum install -y ipvsadm
+# enable IP forward
+echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
+
+sysctl -p
+touch /etc/sysconfig/ipvsadm
+systemctl start ipvsadm
+systemctl enable ipvsadm
+
+2. Docker宿主机上安装ipvsadm
+yum install -y ipvsadm
+
+否则容器内运行ipvsadm会出现如下错误：
+Can't initialize ipvs: Protocol not available
+
+Are you sure that IP Virtual Server is built in the kernel or as module?
+
+如果是ubuntu的宿主机，运行下 sudo ipvsadm ，这样加载ip_vs模块
+
